@@ -235,6 +235,65 @@ a.btn { display: grid; place-items: center; text-decoration: none; margin-top: 6
 .result { align-items: stretch; text-align: center; }
 .bigstat { font-family: var(--font-display); font-weight: 800; font-size: 60px; color: var(--accent-t); line-height: 1.1; }
 
+.startrow { display: flex; justify-content: center; margin-top: 8px; }
+.startrow .btn { min-width: 220px; }
+@media (max-width: 600px) {
+  body { font-size: 17px; }
+  main.wrap { gap: 12px; }
+  body { padding-block: 12px 20px; }
+  .top { gap: 8px; }
+  .logo { height: 64px; }
+  .pill-btn { padding: 4px 14px; min-height: 40px; }
+  .icon-btn { width: 40px; min-height: 40px; }
+  #home h1 { font-size: 26px; }
+  .bridge .node { width: 5.6rem; height: 5.6rem; }
+  .bridge .node b { font-size: .75rem; }
+  .bridge .node small { font-size: 8px; }
+  .bridge .tag { font-size: 10px; padding: .15rem .5rem; }
+  /* game + result: compact so everything fits one screen */
+  .panel { padding: 10px 12px; gap: 6px; border-radius: 14px; }
+  .panel h2 { font-size: 19px; }
+  .hint { font-size: 13px; line-height: 1.4; }
+  .btn { min-height: 42px; padding: 8px 18px; font-size: 16px; }
+  a.btn { margin-top: 0; }
+  .tnum { font-size: 20px; }
+  .bar { height: 8px; }
+  .pool, .slots { gap: 5px; }
+  .step { min-height: 38px; padding: 6px 12px; font-size: 15px; border-radius: 10px; }
+  .slot { min-height: 38px; padding: 4px 10px; gap: 8px; border-radius: 10px; }
+  .slot::before, .slot::after { width: 24px; height: 24px; }
+  .slot::before { font-size: 13px; }
+  .slot .t { font-size: 15px; gap: 0; }
+  .slot .fix { font-size: 12px; line-height: 1.35; }
+  .bigstat { font-size: 40px; }
+  .verdict { font-size: 15px; line-height: 1.4; }
+  .result { gap: 6px; }
+  .result .hint { font-size: 12px; }
+}
+@media (max-width: 600px) and (max-height: 780px) {
+  body { padding-block: 6px 10px; }
+  main.wrap { gap: 6px; }
+  .top { gap: 4px; }
+  .logo { height: 34px; }
+  .pill-btn { min-height: 34px; padding: 2px 12px; font-size: 14px; }
+  .icon-btn { width: 34px; min-height: 34px; }
+  .panel { padding: 8px 10px; gap: 5px; }
+  .panel h2 { font-size: 17px; }
+  .hint { font-size: 12px; line-height: 1.3; }
+  .step, .slot { min-height: 32px; }
+  .step { padding: 3px 10px; font-size: 14px; }
+  .slot { padding: 2px 8px; }
+  .slot::before, .slot::after { width: 22px; height: 22px; }
+  .slot .t { font-size: 14px; }
+  .slot .fix { font-size: 11px; line-height: 1.25; }
+  .pool, .slots { gap: 4px; }
+  .btn { min-height: 38px; padding: 4px 16px; font-size: 15px; }
+  .bigstat { font-size: 32px; }
+  .verdict { font-size: 14px; }
+  .result { gap: 4px; }
+  #home h1 { font-size: 24px; }
+}
+
 @media (min-width: 900px) {
   body { font-size: 22px; }
   .wrap { max-width: 860px; gap: 26px; }
@@ -283,15 +342,7 @@ a.btn { display: grid; place-items: center; text-decoration: none; margin-top: 6
       </div>
     </div>
 
-    <div class="cards" style="margin-top:20px">
-      <button class="card" type="button" id="startCard">
-        <h2 data-i18n="cardTitle">رتّب خطوات مسيرتك في ١٥ ثانية</h2>
-        <p class="desc" data-i18n="cardDesc">رتّب المهارات المهنية بالترتيب الصحيح قبل ما ينتهي الوقت.</p>
-        <div class="meta"><span class="chip" data-i18n="chip1">١٥ ثانية</span><span class="chip" data-i18n="chip2">صح وخطأ</span></div>
-        <span class="go" data-i18n="go">ابدأ التحدي ←</span>
-      </button>
-    </div>
-    <p class="foot" style="margin-top:20px"><span data-i18n="foot">مهنار: خبرة تلتقي بطموح</span> · <a href="https://mehnar.com" target="_blank" rel="noopener">mehnar.com</a></p>
+    <div class="startrow"><button class="btn" type="button" id="startCard" data-i18n="go">ابدأ التحدي ←</button></div>
   </section>
 
   <section id="skills" hidden></section>
@@ -308,7 +359,7 @@ a.btn { display: grid; place-items: center; text-decoration: none; margin-top: 6
   var TXT = {
     ar: {
       home: "الرئيسية", title: "العب مع مهنار",
-      sub: "تحدٍّ سريع لكل خريج وطالب: رتّب خطوات مسيرتك في ١٥ ثانية.",
+      sub: "رتّب خطوات مسيرتك في ١٥ ثانية.",
       seeker: "الباحث عن المعرفة", seekerSub: "طالب \u00b7 خريج \u00b7 موظف", expert: "الخبير", expertSub: "خبرة سنوات", brand: "مهنار",
       cardTitle: "رتّب خطوات مسيرتك في ١٥ ثانية",
       cardDesc: "رتّب المهارات المهنية بالترتيب الصحيح قبل ما ينتهي الوقت.",
@@ -329,7 +380,7 @@ a.btn { display: grid; place-items: center; text-decoration: none; margin-top: 6
     },
     en: {
       home: "Home", title: "Play with Mehnar",
-      sub: "A quick challenge for every graduate and student: put your career steps in order in 15 seconds.",
+      sub: "Put your career steps in order in 15 seconds.",
       seeker: "Knowledge Seeker", seekerSub: "Student \u00b7 Graduate \u00b7 Professional", expert: "Expert", expertSub: "Years of experience", brand: "Mehnar",
       cardTitle: "Put your career steps in order in 15 seconds",
       cardDesc: "Arrange the professional skills in the right order before time runs out.",
