@@ -306,7 +306,7 @@ a.btn { display: grid; place-items: center; text-decoration: none; margin-top: 6
 
 /* Phone: spread every screen over the full height, no scrolling */
 @media (max-width: 600px) {
-  body { margin: 0; min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; padding-block: 10px 14px; }
+  body { margin: 0; min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; padding-block: 10px 62px; }
   main.wrap { flex: 1 1 auto; min-height: 0; gap: 8px; max-width: none; width: 100%; }
   #home, #skills { flex: 1 1 auto; display: flex; flex-direction: column; min-height: 0; }
   #home[hidden], #skills[hidden] { display: none !important; }
@@ -322,6 +322,17 @@ a.btn { display: grid; place-items: center; text-decoration: none; margin-top: 6
   #skills .pool { flex-grow: 1; }
   .panel h2 { font-size: clamp(18px, 2.8dvh, 24px); }
   .step, .slot { font-size: clamp(14px, 2.1dvh, 17px); }
+}
+
+@media (max-width: 600px) {
+  #skills .panel h2 { font-size: clamp(16px, 2.4dvh, 20px); }
+  #skills .hint { font-size: 12px; }
+  .step, .slot { min-height: 32px; }
+  .step { padding-block: 3px; }
+  .slot { padding-block: 2px; }
+  .slot::before, .slot::after { width: 22px; height: 22px; }
+  .panel { padding: 8px 10px; gap: 5px; }
+  .btn { min-height: 38px; }
 }
 
 @media (min-width: 900px) {
