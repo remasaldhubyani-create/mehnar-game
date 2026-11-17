@@ -231,10 +231,14 @@ a.btn { display: grid; place-items: center; text-decoration: none; margin-top: 6
 .slot .t { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; overflow-wrap: anywhere; text-align: center; }
 .slot .fix { font-size: 15px; color: var(--ink); opacity: .85; }
 .verdict { font-weight: 700; font-size: 20px; }
+.cta { font-weight: 800; color: var(--accent-t); font-size: 18px; line-height: 1.4; text-align: center; }
 
 .result { align-items: stretch; text-align: center; }
 .bigstat { font-family: var(--font-display); font-weight: 800; font-size: 60px; color: var(--accent-t); line-height: 1.1; }
 
+.how { list-style: none; margin: 14px auto 0; padding: 0; display: flex; justify-content: center; align-items: flex-start; gap: 14px; max-width: 40rem; }
+.how li { flex: 1 1 0; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; font-size: 15px; line-height: 1.35; font-weight: 600; }
+.how i { font-style: normal; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: #fff; font-weight: 800; font-size: 15px; }
 .startrow { display: flex; justify-content: center; margin-top: 8px; }
 .startrow .btn { min-width: 220px; }
 @media (max-width: 600px) {
@@ -246,6 +250,10 @@ a.btn { display: grid; place-items: center; text-decoration: none; margin-top: 6
   .pill-btn { padding: 4px 14px; min-height: 40px; }
   .icon-btn { width: 40px; min-height: 40px; }
   #home h1 { font-size: 26px; }
+  .how { gap: 8px; margin-top: 20px; }
+  .startrow { margin-top: 18px; }
+  .how li { font-size: 13px; gap: 4px; }
+  .how i { width: 26px; height: 26px; font-size: 13px; }
   .bridge .node { width: 5.6rem; height: 5.6rem; }
   .bridge .node b { font-size: .75rem; }
   .bridge .node small { font-size: 8px; }
@@ -267,6 +275,7 @@ a.btn { display: grid; place-items: center; text-decoration: none; margin-top: 6
   .slot .fix { font-size: 12px; line-height: 1.35; }
   .bigstat { font-size: 40px; }
   .verdict { font-size: 15px; line-height: 1.4; }
+  .cta { font-size: 15px; }
   .result { gap: 6px; }
   .result .hint { font-size: 12px; }
 }
@@ -290,8 +299,29 @@ a.btn { display: grid; place-items: center; text-decoration: none; margin-top: 6
   .btn { min-height: 38px; padding: 4px 16px; font-size: 15px; }
   .bigstat { font-size: 32px; }
   .verdict { font-size: 14px; }
+  .cta { font-size: 14px; }
   .result { gap: 4px; }
   #home h1 { font-size: 24px; }
+}
+
+/* Phone: spread every screen over the full height, no scrolling */
+@media (max-width: 600px) {
+  body { margin: 0; min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; padding-block: 10px 14px; }
+  main.wrap { flex: 1 1 auto; min-height: 0; gap: 8px; max-width: none; width: 100%; }
+  #home, #skills { flex: 1 1 auto; display: flex; flex-direction: column; min-height: 0; }
+  #home[hidden], #skills[hidden] { display: none !important; }
+  #home { justify-content: space-evenly; }
+  #home .how, #home .startrow { margin-top: 0; }
+  .logo { height: clamp(44px, 9dvh, 96px); }
+  #home h1 { font-size: clamp(26px, 4.6dvh, 38px); }
+  .hero { gap: clamp(8px, 2dvh, 20px); }
+  .startrow .btn { min-height: 52px; font-size: 19px; }
+  #skills .panel { flex: 1 1 auto; }
+  #skills .slots, #skills .pool { flex: 1 1 auto; grid-auto-rows: minmax(0, 1fr); align-content: stretch; }
+  #skills .result .slots { grid-auto-rows: auto; align-content: space-between; }
+  #skills .pool { flex-grow: 1; }
+  .panel h2 { font-size: clamp(18px, 2.8dvh, 24px); }
+  .step, .slot { font-size: clamp(14px, 2.1dvh, 17px); }
 }
 
 @media (min-width: 900px) {
@@ -325,7 +355,7 @@ a.btn { display: grid; place-items: center; text-decoration: none; margin-top: 6
   <section id="home">
     <div class="hero">
       <h1 data-i18n="title">العب مع مهنار</h1>
-      <p data-i18n="sub">تحدٍّ سريع لكل خريج وطالب: رتّب خطوات مسيرتك في ١٥ ثانية.</p>
+      <p data-i18n="sub">تحدٍّ سريع لكل خريج وطالب: رتّب خطوات مسيرتك في ٤٥ ثانية.</p>
       <div class="bridge" role="img" id="bridge">
         <div class="node seeker">
           <b data-i18n="seeker">الباحث عن المعرفة</b>
@@ -342,6 +372,11 @@ a.btn { display: grid; place-items: center; text-decoration: none; margin-top: 6
       </div>
     </div>
 
+    <ol class="how">
+      <li><i>1</i><span data-i18n="how1">شوف ٥ مهارات</span></li>
+      <li><i>2</i><span data-i18n="how2">رتّبها في ٤٥ ثانية</span></li>
+      <li><i>3</i><span data-i18n="how3">اكتشف نتيجتك</span></li>
+    </ol>
     <div class="startrow"><button class="btn" type="button" id="startCard" data-i18n="go">ابدأ التحدي ←</button></div>
   </section>
 
@@ -354,19 +389,19 @@ a.btn { display: grid; place-items: center; text-decoration: none; margin-top: 6
 
   /* ---------- text, Arabic and English ---------- */
   var EXPERTS_URL = "https://mehnar.com/"; // where the visitor goes after the game
-  var TIME_MS = 15000;
+  var TIME_MS = 45000;
 
   var TXT = {
     ar: {
       home: "الرئيسية", title: "العب مع مهنار",
-      sub: "رتّب خطوات مسيرتك في ١٥ ثانية.",
+      sub: "كيف تكون مستعد لسوق العمل؟", how1: "شوف ٥ مهارات", how2: "رتّبها في ٤٥ ثانية", how3: "اكتشف نتيجتك",
       seeker: "الباحث عن المعرفة", seekerSub: "طالب \u00b7 خريج \u00b7 موظف", expert: "الخبير", expertSub: "خبرة سنوات", brand: "مهنار",
-      cardTitle: "رتّب خطوات مسيرتك في ١٥ ثانية",
+      cardTitle: "رتّب خطوات مسيرتك في ٤٥ ثانية",
       cardDesc: "رتّب المهارات المهنية بالترتيب الصحيح قبل ما ينتهي الوقت.",
-      chip1: "١٥ ثانية", chip2: "صح وخطأ", go: "ابدأ التحدي ←",
+      chip1: "٤٥ ثانية", chip2: "صح وخطأ", go: "ابدأ التحدي ←",
       foot: "مهنار: خبرة تلتقي بطموح",
-      gameTitle: "رتّب خطوات مسيرتك",
-      gameHint: "رتّب هذه المهارات بالترتيب <b>الصحيح</b> لمن يبدأ مسيرته المهنية، من الأولى إلى الأخيرة.",
+      gameTitle: "أهم ٥ مهارات لازم تعرفها وتتعلمها لسوق العمل",
+      gameHint: "اضغط عليها بالترتيب <b>الصحيح</b>، من الأولى إلى الأخيرة.",
       yourOrder: "ترتيبك", available: "المهارات المتاحة", undo: "تراجع",
       result: "نتيجتك",
       okCount: function (ok, n) { return ok + " من " + n + " في مكانها الصحيح"; },
@@ -375,19 +410,19 @@ a.btn { display: grid; place-items: center; text-decoration: none; margin-top: 6
       vGood: "على الطريق الصحيح",
       vLow: "ولا يهمك، خبراء مهنار يوضحون لك الطريق",
       place: "مكانها الصحيح: ",
-      goMehnar: "انتقل إلى مهنار ←", again: "العب مرة أخرى",
+      cta: "ادخل مع مهنار عشان تستكشف كيف تبني مستقبلك", goMehnar: "ادخل مع مهنار ←", again: "العب مرة أخرى",
       langBtn: "EN", langLabel: "English", themeLabel: "الوضع الليلي"
     },
     en: {
       home: "Home", title: "Play with Mehnar",
-      sub: "Put your career steps in order in 15 seconds.",
+      sub: "How do you get ready for the job market?", how1: "See 5 skills", how2: "Order them in 45 seconds", how3: "Get your result",
       seeker: "Knowledge Seeker", seekerSub: "Student \u00b7 Graduate \u00b7 Professional", expert: "Expert", expertSub: "Years of experience", brand: "Mehnar",
-      cardTitle: "Put your career steps in order in 15 seconds",
+      cardTitle: "Put your career steps in order in 45 seconds",
       cardDesc: "Arrange the professional skills in the right order before time runs out.",
-      chip1: "15 seconds", chip2: "Right or wrong", go: "Start the challenge →",
+      chip1: "45 seconds", chip2: "Right or wrong", go: "Start the challenge →",
       foot: "Mehnar: where experience meets ambition",
-      gameTitle: "Put your career steps in order",
-      gameHint: "Arrange these skills in the <b>correct</b> order for someone starting their career, from first to last.",
+      gameTitle: "The 5 most important skills to know and learn for the job market",
+      gameHint: "Tap them in the <b>correct</b> order, from first to last.",
       yourOrder: "Your order", available: "Available skills", undo: "Undo",
       result: "Your result",
       okCount: function (ok, n) { return ok + " of " + n + " in the right place"; },
@@ -396,7 +431,7 @@ a.btn { display: grid; place-items: center; text-decoration: none; margin-top: 6
       vGood: "You are on the right track",
       vLow: "No worries, Mehnar's experts will show you the way",
       place: "Correct place: ",
-      goMehnar: "Go to Mehnar →", again: "Play again",
+      cta: "Join Mehnar to discover how to build your future", goMehnar: "Join Mehnar →", again: "Play again",
       langBtn: "عربي", langLabel: "العربية", themeLabel: "Dark mode"
     }
   };
@@ -404,18 +439,18 @@ a.btn { display: grid; place-items: center; text-decoration: none; margin-top: 6
   /* The order of this array is the correct order. */
   var SKILLS = {
     ar: [
-      { n: "المهارات الناعمة (التواصل والعمل بروح الفريق)", w: "المهارات الناعمة أساس كل شي، وتبدأ تبنيها من اليوم." },
-      { n: "كتابة السيرة الذاتية", w: "سيرتك هي بوابتك الأولى للفرص." },
-      { n: "بناء العلاقات المهنية", w: "علاقاتك المهنية تفتح لك فرص ما تنعلن." },
-      { n: "البحث عن وظيفة", w: "بعد ما تجهز نفسك، تنطلق في البحث." },
-      { n: "المقابلة الشخصية", w: "آخر محطة: المقابلة اللي تحوّل الفرصة لوظيفة." }
+      { n: "السيرة الذاتية", w: "سيرتك هي بوابتك الأولى للفرص." },
+      { n: "المهارات الناعمة", w: "التواصل والعمل بروح الفريق يدعمان سيرتك ويبنيان حضورك المهني." },
+      { n: "إنشاء حساب رسمي للتقديم", w: "حسابك الرسمي هو الباب اللي تقدّم منه على الوظائف." },
+      { n: "التقديم على الوظائف بشكل مناسب", w: "قدّم على الوظيفة اللي تناسبك بسيرة موجّهة لها." },
+      { n: "اجتياز المقابلة الشخصية", w: "آخر محطة: المقابلة اللي تحوّل الفرصة لوظيفة." }
     ],
     en: [
-      { n: "Soft skills (communication and teamwork)", w: "Soft skills are the foundation of everything, and you can start building them today." },
-      { n: "Writing your CV", w: "Your CV is your first door to opportunities." },
-      { n: "Building professional relationships", w: "Your professional network opens doors to opportunities that are never announced." },
-      { n: "Searching for a job", w: "Once you are prepared, you start searching." },
-      { n: "The job interview", w: "The last stop: the interview that turns an opportunity into a job." }
+      { n: "The CV", w: "Your CV is your first door to opportunities." },
+      { n: "Soft skills", w: "Communication and teamwork support your CV and build your professional presence." },
+      { n: "Creating an official account to apply", w: "Your official account is the door you apply through." },
+      { n: "Applying to jobs the right way", w: "Apply to the job that fits you, with a CV tailored to it." },
+      { n: "Passing the job interview", w: "The last stop: the interview that turns an opportunity into a job." }
     ]
   };
 
@@ -485,7 +520,7 @@ a.btn { display: grid; place-items: center; text-decoration: none; margin-top: 6
   });
 
   /* =====================================================
-     The game: put the career steps in order, 15 seconds.
+     The game: put the career steps in order, 45 seconds.
      ===================================================== */
   function startSkills() {
     stopAll();
@@ -500,7 +535,7 @@ a.btn { display: grid; place-items: center; text-decoration: none; margin-top: 6
       if (sk.over) return;
       var left = TIME_MS - (Date.now() - sk.t0);
       var tb = $("tb"), tl = $("tl");
-      if (tb) { tb.style.width = Math.max(0, left / TIME_MS * 100) + "%"; tb.parentNode.classList.toggle("low", left < 5000); }
+      if (tb) { tb.style.width = Math.max(0, left / TIME_MS * 100) + "%"; tb.parentNode.classList.toggle("low", left < 10000); }
       if (tl) tl.textContent = Math.max(0, Math.ceil(left / 1000));
       if (left <= 0) finish(true);
     }
@@ -556,7 +591,7 @@ a.btn { display: grid; place-items: center; text-decoration: none; margin-top: 6
         html += '<li class="slot ' + (good ? 'ok' : 'bad') + '"><span class="t"><span>' + esc(list[v].n) + '</span>' +
           (good ? '' : '<span class="fix">' + t("place") + (v + 1) + ' · ' + esc(list[v].w) + '</span>') + '</span></li>';
       });
-      html += '</ol><a class="btn" href="' + EXPERTS_URL + '" target="_blank" rel="noopener">' + t("goMehnar") + '</a>' +
+      html += '</ol><p class="cta">' + t("cta") + '</p><a class="btn" href="' + EXPERTS_URL + '" target="_blank" rel="noopener">' + t("goMehnar") + '</a>' +
         '<button type="button" class="btn ghost" id="sAgain">' + t("again") + '</button></div>';
       $("skills").innerHTML = html;
       $("sAgain").addEventListener("click", function () { startSkills(); window.scrollTo(0, 0); });
